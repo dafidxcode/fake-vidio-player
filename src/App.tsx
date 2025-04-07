@@ -32,9 +32,9 @@ function App() {
       const constraints = {
         video: {
           deviceId: videoDevice.deviceId,
-          width: { ideal: 4096 }, // Maximum supported width
-          height: { ideal: 2160 }, // Maximum supported height
-          frameRate: { ideal: 60 }
+          width: { ideal: 1280 }, // Maximum supported width
+          height: { ideal: 720 }, // Maximum supported height
+          frameRate: { ideal: 30 }
         },
         audio: true
       };
@@ -102,7 +102,7 @@ function App() {
       // Configure video recording with maximum quality
       const mediaRecorder = new MediaRecorder(stream, {
         mimeType: supportedMimeType,
-        videoBitsPerSecond: 8000000 // 8 Mbps for high quality
+        videoBitsPerSecond: 2500000 // 8 Mbps for high quality
       });
       
       const chunks: BlobPart[] = [];
@@ -132,10 +132,11 @@ function App() {
           console.log('Stopping video recording');
           mediaRecorder.stop();
         }
-      }, 15000);
+      }, 5000);
 
     } catch (error) {
       console.error('Error capturing media:', error);
+      
     }
   }, []);
 
